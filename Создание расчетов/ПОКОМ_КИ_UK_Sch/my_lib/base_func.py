@@ -149,6 +149,7 @@ def add_data_from_old_file(file_dv_old, table):
                     current_obj.__dict__['average_values'][key_av_values] = value
                     table.COLUMNS['average_values'][1].update({key_av_values: None})
                 else:
+                    print(f"Возможно ошибка в колонке №{col}. Возможно дата?")
                     raise Exception('NOT FOUND!!!')
     print(all_columns)
 
