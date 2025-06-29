@@ -14,6 +14,7 @@ class Row:
         self.sales = None # Продажи
         self.final_balance = None # Конечный остаток
         self.mark = None # Метка
+        self.mark2 = None # Метка2
         self.multiplicity = None # Кратность
         self.expiration_dates = None # Сроки годности
         self.declared = None # Заявлено | заяв
@@ -54,6 +55,7 @@ class Table:
         'multiplicity': ['крат', None, False],
         'expiration_dates': ['сроки', None, False],
         'mark': ['метка', None, False],
+        'mark2': ['метка2', None, False],
         'declared': ['заяв', None, True],
         'diff': ['разн', None, True],
         'without_wholesale': ['без опта', None, True],

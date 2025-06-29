@@ -78,6 +78,7 @@ def add_data_from_old_file(file_dv_old, table):
         'name_sku': None,  # Номенклатура
         'units_of_measurement': None,  # Ед. изм.,
         'mark': None,  # метка
+        'mark2': None,  # метка2
         'multiplicity': None,  # крат
         'expiration_dates': None,  # сроки
         'orders_is_on_the_way': {},  # заказ в пути
@@ -111,6 +112,9 @@ def add_data_from_old_file(file_dv_old, table):
                 columns_val.append(col)
             if cell_value == 'метка':
                 all_columns['mark'] = col
+                columns_val.append(col)
+            if cell_value == 'метка2':
+                all_columns['mark2'] = col
                 columns_val.append(col)
             if cell_value == 'крат':
                 all_columns['multiplicity'] = col
