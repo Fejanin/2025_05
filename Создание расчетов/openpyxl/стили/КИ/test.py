@@ -4,7 +4,6 @@ from openpyxl.styles import PatternFill
 
 green_fill = PatternFill(start_color='13E22E', end_color='13E22E', fill_type='solid')
 
-
 # file_name = 'new_дв 12,12,24 днрсч пок ки.xlsx'
 file_name = input('Введите название файла: ')
 
@@ -17,11 +16,16 @@ sheet.freeze_panes = 'C6'
 rows = sheet.max_row
 columns = sheet.max_column
 
+is_mrtrg_ki = 'мртрг ки' in file_name
+
 header = 3
 
 width_cols = {'Ед. изм.': 3, 'Начальный остаток': 6, 'Приход': 6, 'Расход': 7, 'Конечный остаток': 7, 'крат': 5, 'сроки': 5,
              'метка': 12, 'метка2': 1, 'заяв': 7, 'разн': 7, 'без опта': 7, 'опт': 7, 'заказ в пути': 7, 'ср нов': 7, 'расчет': 7,
              'заказ филиала': 7, 'Комментарии филиала': 21, 'кон ост': 5, 'факт': 5, 'ср': 6, 'комментарии': 25, 'вес': 7}
+
+if is_mrtrg_ki:
+    width_cols['крат'] = 6
 
 style_cols = {'заказ филиала': green_fill, 'Комментарии филиала': green_fill}
 
@@ -37,7 +41,6 @@ for cell in sheet[header]:
             columns_for_formulas[cell.value] = cell.column_letter
 
 
-
 for num, row in enumerate(sheet, 1):
     if row[0].value and row[0].value != 'Номенклатура':
         mult = f'{columns_for_formulas["крат"]}{num}'
@@ -46,5 +49,10 @@ for num, row in enumerate(sheet, 1):
             requirement = f'{columns_for_formulas["расчет"]}{num}'
             sheet[f'{columns_for_formulas["вес"]}{num}'].value = f'={mult}*{requirement}'
 
+col_mult = sheet.column_dimensions[columns_for_formulas['крат']]
+if is_mrtrg_ki:
+    col_mult.number_format = '0.000'
+else:
+    col_mult.number_format = '0.00'
 
 wb.save('test.xlsx')

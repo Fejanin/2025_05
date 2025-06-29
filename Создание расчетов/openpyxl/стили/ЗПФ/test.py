@@ -56,4 +56,14 @@ for num, row in enumerate(sheet, 1):
             sheet[f'{columns_for_formulas["расчет (отгрузит завод)"]}{num}'].value = f'={mult_boxes}*{order_boxes}'
             sheet[f'{columns_for_formulas["кол-во паллет"]}{num}'].value = f'={order_boxes}/{columns_for_formulas["паллет"]}{num}'
 
+col_mult = sheet.column_dimensions[columns_for_formulas['крат']]
+col_mult_boxes = sheet.column_dimensions[columns_for_formulas['крат кор']]
+col_order_boxes = sheet.column_dimensions[columns_for_formulas['заказ кор.']]
+col_pallet = sheet.column_dimensions[columns_for_formulas['кол-во паллет']]
+
+col_mult.number_format = '0.00'
+col_mult_boxes = '0.00'
+col_order_boxes = '0.0'
+col_pallet = '0.0'
+
 wb.save('test.xlsx')
