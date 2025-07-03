@@ -39,7 +39,7 @@ if not max_row:
 
 original = {}
 duplicate = {}
-test = {}
+# test = {}
 
 for i in range(FIRST_ROW_DATA, max_row + 1):
     if sheet.cell(i, MARK2).value:
@@ -63,5 +63,5 @@ for i in original:
 
 sheet.delete_rows(FIRST_ROW_DATA, max_row - FIRST_ROW_DATA + srip_row)
 
-workbook.save(filename=f"test_{file_name}")
-input("It's ok. Push ENTER.")
+workbook.save(filename=f"res_{file_name}")
+# input("It's ok. Push ENTER.")
