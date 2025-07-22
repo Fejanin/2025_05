@@ -110,7 +110,7 @@ def rename_file(old_name: str, new_name: str) -> None:
 def create_error_report(error: dict) -> None:
     with open('ERROR.txt', 'w') as f:
         for key, value in error.items():
-            f.write(f'{key}: {value}')
+            f.write(f'{key}:\n{value}\n\n')
 
 def read_text(old_file_name: str) -> list:
     with open(old_file_name, 'rb') as pdfFileObj:
