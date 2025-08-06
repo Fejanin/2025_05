@@ -5,6 +5,11 @@ import glob
 import os
 
 
+# TODO - не создается файл с ошибками, если в директории уже
+# есть переименованный файл и есть на него непереименованный дубль!!!
+
+
+
 def create_new_name(old_file_name: str) -> list:
     text_first_page, text_middle_pages, text_last_page = read_text(old_file_name)
     try:
