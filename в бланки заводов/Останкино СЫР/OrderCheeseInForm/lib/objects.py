@@ -40,7 +40,7 @@ class Division:
         return load_workbook(self.file, data_only=data_only)
 
     def get_order_from_file(self):
-        for r in range(self.FIRST_ROW, self.max_row):
+        for r in range(self.FIRST_ROW, self.max_row + 1):
             sku = self.sheet_data_only[f"{self.cols_abc['Номенклатура']}{r}"].value
             order = self.sheet_data_only[f"{self.cols_abc['итого']}{r}"].value
             if order:
