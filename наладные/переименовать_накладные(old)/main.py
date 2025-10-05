@@ -35,7 +35,9 @@ def create_new_name(old_file_name: str) -> list:
     new_file_name = f'{name_company} {number} {max_data} {name_driver} {weight}кг.pdf'
     all_sku = find_order_sku(text_first_page + text_middle_pages + text_last_page)
     all_sku = '\n'.join([str(i) for i in all_sku])
-    return [old_file_name, new_file_name], [f'{new_file_name}\n{all_sku}\n\n', name_driver]
+    write_report(f'{new_file_name}\n{all_sku}\n\n', name_driver)
+    
+    return [old_file_name, new_file_name]
 
 
 def write_report(text, name_driver):
@@ -67,6 +69,7 @@ def find_weight(text):
 
 
 def find_invoice_name(text):
+    #pattern = r'[a-zA-Zа-яА-ЯёЁ]{2}\d{6}\u00ad\d{2}'
     pattern = r'[a-zA-Zа-яА-ЯёЁ]{2,}\u00ad?\d{5,}\u00ad\d{2}'
     return re.findall(pattern, text)[0].replace('\u00ad', '-')
 
@@ -111,7 +114,6 @@ def rename_file(old_name: str, new_name: str) -> None:
 
 def create_error_report(error: dict) -> None:
     with open('ERROR.txt', 'w') as f:
-        f.write(f'Были удалены следующие файлы:\n\n')
         for key, value in error.items():
             f.write(f'{key}:\n{value}\n\n')
 
@@ -134,29 +136,16 @@ def read_text(old_file_name: str) -> list:
             middle = ''
     return start, middle, end
 
-def find_double(lst: list) -> tuple:
-    unique = {f[0][1]: [f[0][0], f[1]] for f in lst}
-    del_files = [f[0] for f in lst if (f[0][1] in unique and f[0][0] != unique[f[0][1]][0])]
-    for key in unique:
-        write_report(*unique[key][1])
-    unique = [[unique[key][0], key] for key in unique]
-    return unique, del_files
-
-def del_double(lst: list) -> None:
-    res = [f[0] for f in lst]
-    for f in res:
-        os.remove(f)
 
 
 if __name__ == '__main__':
     pdf_files = find_pdf_files()
     old_new_files = [create_new_name(i) for i in pdf_files]
-    unique, del_files = find_double(old_new_files)
-    error = check_unique(del_files)
-    del_double(del_files)
+    error = check_unique(old_new_files)
     not_rename = [item for sublist in error.values() for item in sublist]
-    for old, new in unique:
-        rename_file(old, new)
+    for old, new in old_new_files:
+        if not old in not_rename:
+            rename_file(old, new)
     if error:
         create_error_report(error)
 
