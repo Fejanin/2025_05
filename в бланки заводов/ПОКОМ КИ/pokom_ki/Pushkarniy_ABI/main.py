@@ -17,7 +17,7 @@ file = input("Введите название бланка для завода: 
 wb = load_workbook(file)
 sh = wb.active
 calc_weight = "="
-calc_pallets = "="
+calc_pallets = "ОКРУГЛВВЕРХ("
 
 
 for row in range(1, sh.max_row + 1):
@@ -28,7 +28,7 @@ for row in range(1, sh.max_row + 1):
         calc_weight = calc_weight[:-1]
         sh[f"{SU_weight_brutto}{row}"] = calc_weight
     if type(sh[f"{SUM_PALLET}{row}"].value) is str and sh[f"{SUM_PALLET}{row}"].value == "Кол-во паллет":
-        calc_pallets = calc_pallets[:-1]
+        calc_pallets = calc_pallets[:-1] + ";0)"
         sh[f"{SU_weight_brutto}{row}"] = calc_pallets
 
 wb.save(f"{file}")
