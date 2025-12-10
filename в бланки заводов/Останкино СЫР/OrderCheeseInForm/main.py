@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     divisions = [i for i in (berdiansk, doneck, lugansk, melitopol) if i]
     
-    order = ORDER("Бланк заказов сыр  дистр.xlsx", divisions)
+    order = ORDER("новый_бланк/Бланк заказов сыр  дистр.xlsx", divisions)
     for d in divisions:
         print(f'{d.name = }')
         for sku in d.orders:
