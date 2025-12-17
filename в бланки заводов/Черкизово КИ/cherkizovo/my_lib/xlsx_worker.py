@@ -21,11 +21,11 @@ class SKU:
         print(self.name_1c)
         try:
             weight = self.order * self.weight_sku
+            res = round(round(weight / self.box_weight) * self.box_weight / self.weight_sku, 4)
+            self.res_order = res
         except:
-            print(self.check_data())
-            raise TypeError
-        res = round(round(weight / self.box_weight) * self.box_weight / self.weight_sku, 4)
-        self.res_order = res
+            pass
+        
 
     def calculate_weight(self):
         return round(self.res_order * self.weight_sku, 4)
