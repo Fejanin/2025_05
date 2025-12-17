@@ -18,7 +18,12 @@ class SKU:
         self.res_order = None  # вычмсляемое значение (calculate_order)
 
     def calculate_order(self):
-        weight = self.order * self.weight_sku
+        print(self.name_1c)
+        try:
+            weight = self.order * self.weight_sku
+        except:
+            print(self.check_data())
+            raise TypeError
         res = round(round(weight / self.box_weight) * self.box_weight / self.weight_sku, 4)
         self.res_order = res
 
