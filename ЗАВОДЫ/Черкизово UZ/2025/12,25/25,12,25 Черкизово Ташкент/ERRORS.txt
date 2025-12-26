@@ -1,0 +1,39 @@
+
+##################################################
+Заполнены не все поля в SKU:
+
+Артикул: None.
+Наименование из 1С: ВК Серв с говяд/ЛТФ/ох/шт 0.4кг/гк329/KZ.
+Наименование из бланка завода: None.
+Незаполненные поля: article, name_manufacture, box_weight, unit_maesurements, weight_sku, res_order.
+
+Артикул: None.
+Наименование из 1С: Клб ПолуКпч С говяд/ЛТФ/ТУ/охл/-/гк329.
+Наименование из бланка завода: None.
+Незаполненные поля: article, name_manufacture, box_weight, unit_maesurements, weight_sku, res_order.
+
+Артикул: None.
+Наименование из 1С: Клб вар Мусул/ЛТФ/ТУ/охл/-/гк329.
+Наименование из бланка завода: None.
+Незаполненные поля: article, name_manufacture, box_weight, unit_maesurements, weight_sku, res_order.
+
+Артикул: None.
+Наименование из 1С: СК АССОРТИ СЕРВ И ПРОШУТ 0.085КГ К 0,85.
+Наименование из бланка завода: None.
+Незаполненные поля: article, name_manufacture, box_weight, unit_maesurements, weight_sku, res_order.
+
+Артикул: None.
+Наименование из 1С: СК КЛАССИКО ИТАЛИАНОНАР ЗА ШТ0.085 K0.85.
+Наименование из бланка завода: None.
+Незаполненные поля: article, name_manufacture, box_weight, unit_maesurements, weight_sku, res_order.
+
+Артикул: None.
+Наименование из 1С: Сосиски Мусульм/ЛТФ/ТУ/охл/TF/гк254.
+Наименование из бланка завода: None.
+Незаполненные поля: article, name_manufacture, box_weight, unit_maesurements, weight_sku, res_order.
+
+Артикул: None.
+Наименование из 1С: ЦБ/РУЛЕТ/-/НЕЖНЫЙ/ИВ/-/ОХЛ/-/-/0,4 K2.4.
+Наименование из бланка завода: None.
+Незаполненные поля: article, name_manufacture, box_weight, unit_maesurements, weight_sku, res_order.
+
