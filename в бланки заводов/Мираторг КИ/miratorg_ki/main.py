@@ -2,14 +2,14 @@ from my_lib.xlsx_worker import SKU, read_xlsx
 
 
 # бланк заовода
-FIRST_ROW = 2
+FIRST_ROW = 7
 ARTICLE = "A"
 NAME_SKU = "B"
-BOX_WEIGHT = "G"
+BOX_WEIGHT = "H"
 # TODO если UNIT_MEASUREMENTS => кг, то возвращать ошибку (еще не было, проверить формулы в бланке завода)
-UNIT_MEASUREMENTS = "E"
-WEIGHT_SKU = "F"
-ORDER = "P"  # колонка куда заносим заказ (в коробках)
+UNIT_MEASUREMENTS = "F"
+WEIGHT_SKU = "G"
+ORDER = "N"  # колонка куда заносим заказ (в коробках)
 
 sku_to_order = {}
 report = ""
@@ -60,10 +60,13 @@ for row, data in enumerate(sh_order, 1):
                     # если UNIT_MEASUREMENTS => кг, то возвращать ошибку
                     if sku_to_order[name1C].unit_maesurements != "Шт":
                         print(f"ОШИБКА. Единицы измерения не шт.!!! Строка - {row}")
+                        print(f"{sku_to_order[name1C].name_1c = }")
                         input("Нахмите ENTER, чтобы завершить программу.")
+                        """
                         raise TypeError(
                             f"ОШИБКА. Единицы измерения не шт.!!! Строка - {row}"
                         )
+                        """
                     sku_to_order[name1C].weight_sku = 1 if sh_order[f"{UNIT_MEASUREMENTS}{row}"].value == "кг" \
                         else sh_order[f"{WEIGHT_SKU}{row}"].value
                     sku_to_order[name1C].num_row = row
