@@ -31,6 +31,8 @@ for i in reader_data.all_keys:
                 value_order = reader_data.all_keys[i]["order"]
                 writer.ws[adress] = value_order
                 good_report.append(f'Заносим значение {i} {translater.all_keys[i]} в кол-ве {reader_data.all_keys[i]["order"]}\n\t\t в ==> {translater.all_keys[i][1]}, ячейка {adress}')
+                print(f"{total_weight = } # {value_order = }")
+                print(f"{reader_data.all_keys = }")
                 total_weight += value_order
         else:
             error['not_found_ost'].append(f'{i} - {translater.all_keys[i]}/ не найден в бланке завода.')

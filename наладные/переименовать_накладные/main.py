@@ -23,16 +23,20 @@ def create_new_name(old_file_name: str) -> list:
     try:
         name_driver = find_name_driver(text_last_page)
     except:
-        name_driver = 'NO NAME'
+        name_driver = 'NO_NAME'
     try:
         name_company = find_name_company(text_first_page)
     except:
-        name_company = 'NO COMPANY'
+        name_company = 'NO_COMPANY'
     try:
         weight = find_weight(text_last_page)
     except:
         weight = '0.0'
-    new_file_name = f'{name_company} {number} {max_data} {name_driver} {weight}кг.pdf'
+    try:
+        city = find_city(text_first_page)
+    except:
+        city = 'NO_CITY'
+    new_file_name = f'{name_company} {number} {max_data} {name_driver} {weight}кг ({city}).pdf'
     all_sku = find_order_sku(text_first_page + text_middle_pages + text_last_page)
     all_sku = '\n'.join([str(i) for i in all_sku])
     return [old_file_name, new_file_name], [f'{new_file_name}\n{all_sku}\n\n', name_driver]
@@ -84,6 +88,14 @@ def find_pdf_files() -> list:
 def find_name_driver(text: str) -> str:
     pattern = r'(?<=Выданной : )[а-яА-ЯёЁ]*'
     return re.search(pattern, text)[0]
+
+
+def find_city(text: str) -> str:
+    cities = ["Крым", "Сочи", "Донецк", "Трояны", "Мелитополь", "Луганск"]
+    for c in cities:
+        if c in text:
+            return c
+    return "NO_CITY"
 
 
 def find_name_company(text: str) -> str:

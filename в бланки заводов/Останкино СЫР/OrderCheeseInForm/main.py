@@ -6,9 +6,6 @@ if __name__ == "__main__":
     berdiansk = Division(
         check_file_name("Бердянск"),
         name="Бердянск")
-    #doneck = None
-    #lugansk = None
-    #melitopol = None
     doneck = Division(
         check_file_name("Донецк"),
         name="Донецк")
@@ -19,11 +16,12 @@ if __name__ == "__main__":
         check_file_name("Мелитополь"),
         name="Мелитополь")
     
-    print(f"{berdiansk.not_in_db = }")  # нет в БД
+    # print(f"{berdiansk.not_in_db = }")  # нет в БД
 
     divisions = [i for i in (berdiansk, doneck, lugansk, melitopol) if i]
     
-    order = ORDER("новый_бланк/Бланк заказов сыр  дистр.xlsx", divisions)
+    order = ORDER(file_name="новый_бланк/Бланк заказов сыр  дистр.xlsx",
+                  divisions=divisions)
     for d in divisions:
         print(f'{d.name = }')
         for sku in d.orders:

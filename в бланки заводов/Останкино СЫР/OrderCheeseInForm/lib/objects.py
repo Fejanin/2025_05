@@ -1,11 +1,13 @@
 if __name__ != "__main__":
     from openpyxl import load_workbook
     from lib.funcs import get_columns_abc_by_name, get_max_col, get_max_row
-    from lib.DB import db
+    from lib.get_DB import get_db
+    db = get_db("lib/DB.xlsx")
 else:
     from openpyxl import load_workbook
     from funcs import get_columns_abc_by_name, get_max_col, get_max_row
-    from DB import db
+    from get_DB import get_db
+    db = get_db("DB.xlsx")
 
 
 class Division:
@@ -150,7 +152,11 @@ class ORDER:
                 self.sheet[f'{self.WEIGHT}{row}'].value != f'={self.ORDER_PIECE_PRODUCTS}{row}*{self.COOF}{row}'):
                 return True
         elif sku.type_formuls == 'вес':
-            if self.sheet[f'{self.PIECE_OR_WEIGHT}{row}'].value.split('/')[1] != str(sku.multiplicity) or \
+            print(f"{self.NAME}")
+            print(f"{float(self.sheet[f'{self.PIECE_OR_WEIGHT}{row}'].value.split('/')[1]) = }\n{float(sku.multiplicity)}")
+            print(f"{self.sheet[f'{self.WEIGHT}{row}'].value = }\n{self.sheet[f'{self.WEIGHT}{row}'].value}")
+            print()
+            if float(self.sheet[f'{self.PIECE_OR_WEIGHT}{row}'].value.split('/')[1]) != float(sku.multiplicity) or \
                self.sheet[f'{self.WEIGHT}{row}'].value != f'={self.ORDER_WEIGHT_PRODUCTS}{row}':
                 return True
         else:
