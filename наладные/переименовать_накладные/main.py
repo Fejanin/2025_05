@@ -36,7 +36,7 @@ def create_new_name(old_file_name: str) -> list:
         city = find_city(text_first_page)
     except:
         city = 'NO_CITY'
-    new_file_name = f'{name_company} {number} {max_data} {name_driver} {weight}кг ({city}).pdf'
+    new_file_name = f'{name_company} {number} {max_data} {city} {weight}кг ({name_driver}).pdf'
     all_sku = find_order_sku(text_first_page + text_middle_pages + text_last_page)
     all_sku = '\n'.join([str(i) for i in all_sku])
     return [old_file_name, new_file_name], [f'{new_file_name}\n{all_sku}\n\n', name_driver]
