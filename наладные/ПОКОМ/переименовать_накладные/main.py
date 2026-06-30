@@ -91,7 +91,7 @@ def find_name_driver(text: str) -> str:
 
 
 def find_city(text: str) -> str:
-    cities = ["Крым", "Сочи", "Донецк", "Трояны", "Мелитополь", "Луганск"]
+    cities = ["Орёл", "Крым", "Сочи", "Донецк", "Трояны", "Луганск", "Мелитополь"]
     for c in cities:
         if c in text:
             return c
