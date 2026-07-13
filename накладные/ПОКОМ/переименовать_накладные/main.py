@@ -94,6 +94,8 @@ def find_city(text: str) -> str:
     cities = ["Сочи", "Орёл", "Крым", "Донецк", "Трояны", "Луганск", "Мелитополь"]
     for c in cities:
         if c in text:
+            if c == "Трояны":
+                c = "Бердянск"
             return c
     return "NO_CITY"
 
