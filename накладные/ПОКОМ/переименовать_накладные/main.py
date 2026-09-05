@@ -82,7 +82,8 @@ def find_data(text):
 
 
 def find_pdf_files() -> list:
-    return glob.glob('AxaptaReport*.[pP][dD][fF]')
+    # return glob.glob('AxaptaReport*.[pP][dD][fF]')
+    return glob.glob('*.[pP][dD][fF]')
 
 
 def find_name_driver(text: str) -> str:
