@@ -15,10 +15,13 @@ if __name__ == "__main__":
     melitopol = Division(
         check_file_name("Мелитополь"),
         name="Мелитополь")
+    mariupol = Division(
+        check_file_name("Мариуполь"),
+        name="Мариуполь")
     
     # print(f"{berdiansk.not_in_db = }")  # нет в БД
 
-    divisions = [i for i in (berdiansk, doneck, lugansk, melitopol) if i]
+    divisions = [i for i in (berdiansk, doneck, lugansk, melitopol, mariupol) if i]
     
     order = ORDER(file_name="новый_бланк/Бланк заказов сыр  дистр.xlsx",
                   divisions=divisions)
